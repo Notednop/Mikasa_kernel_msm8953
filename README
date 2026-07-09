@@ -1,82 +1,50 @@
-> Custom Linux/Android kernel source for Realme 2 (RMX1805 / RMX1811) based on Qualcomm Snapdragon 450 (MSM8953), optimized for performance, battery life, and stability.
+# Mikasa Kernel - RMX1811/ RMX1805 (RC1/R2)
+
+**Mikasa Kernel** is a custom kernel specifically designed for Qualcomm Snapdragon MSM8953 devices under the RMX1811 RMX1805 codenames. This kernel focuses on stability, daily performance optimization, and efficient power management.
 
 ---
 
-### **Full Description **
+## 🛠️ Build Details & Specifications
 
-```markdown
-# Mikasa Kernel - Realme 2 (RMX1805 / RMX1811)
-
-Welcome to the **Mikasa Kernel** repository, a custom kernel project explicitly tailored and optimized for the **Realme 2** (codename: `RMX1805` / `RMX1811`), powered by the Qualcomm Snapdragon 450 (MSM8953 platform). 
-
-This kernel is built from the ground up to bring modern performance, better efficiency, and upstream stability to your custom ROM setups.
-
-## 🚀 Features & Enhancements
-
-- **Upstream Stability:** Merged with the latest stable Linux kernel patches and Qualcomm LA.UM tags for the MSM8953 platform.
-- **Performance & Smoothness:** Optimized CPU governors and scheduling tailored for the Snapdragon 450 to ensure fluid UI performance and reduced UI lags.
-- **Battery & Power Management:** Fine-tuned idle drain, power efficiency tweaks, and optimal sleep states to maximize daily battery life.
-- **Memory Optimization:** Advanced ZRAM setups and custom low-memory killer (LMK) adjustments, heavily improving multi-tasking on 3GB/4GB RAM variants.
-- **Modern Support:** Native compatibility with advanced rooting solutions like KernelSU / Magisk and modern Android trees (AOSP, crDroid, LineageOS, etc.).
-- **Drivers & Hardware:** Fixed and updated drivers for touchscreens, audio routing, charging, and display panels specific to the RMX1805/1811 hardware.
-
-## 📱 Device Specifications
-
-| Feature | Specification |
-|--- |--- |
-| **Device** | Realme 2 |
-| **Models** | RMX1805, RMX1811 |
-| **Chipset** | Qualcomm Snapdragon 450 (MSM8953 architecture) |
+| Component | Specification |
+| --- | --- |
 | **Architecture** | ARM64 |
+| **Target Devices** | REALME C1 (`RMX1811`), REALME 2 (`RMX1805`),  |
+| **Chipset** | Qualcomm Snapdragon 450 msm8953 |
+| **Compiler** | Optimized using the latest Clang/LLVM toolchain |
 
-## 🛠️ How to Build
+---
 
-### Prerequisites
-Ensure you have a proper cross-compilation environment and an updated toolchain (e.g., Proton Clang, AOSP Clang).
+## 📥 How to Compile (Quick Build)
 
-### Step-by-Step Compilation
-1. Clone the kernel source:
-   ```bash
-   git clone [https://github.com/Notednop/Mikasa_kernel_msm8953.git](https://github.com/Notednop/Mikasa_kernel_msm8953.git) -b <branch_name>
-   cd Mikasa_kernel_msm8953
+If you want to compile the kernel manually using a build script or within a Linux/Codespaces environment:
 
-```
-
-2. Set up the environment variables:
+1. **Clone the Repository:**
 ```bash
-export ARCH=arm64
-export SUBARCH=arm64
+git clone git@github.com:Notednop/Mikasa_kernel_msm8953.git
+cd Mikasa_kernel_msm8953
 
 ```
 
 
-3. Load the Realme 2 specific defconfig:
+2. **Setup Toolchain & Environment:**
+Ensure you have exported the compiler path (such as Clang or GCC) into your terminal environment.
+3. **Start the Build:**
 ```bash
-make mikasa_defconfig
+make O=out mikasa_defconfig
+make O=out -j$(nproc)
+or -> sudo bash compile.sh
 
 ```
 
 
-*(Note: Adjust the defconfig name if you use a specific custom name like `mikasa_rmx1805_defconfig`)*
-4. Compile the source:
-```bash
-make -j$(nproc) CC=clang
 
-```
-*or 
-sudo bash compile.sh
+---
 
+## 🤝 Contribution & Credits
 
+Contributions in the form of bug reports, pull requests, or optimization suggestions are always welcome. Special thanks to the Android community and kernel developers for the base source and patches used in this project.
 
-## 🤝 Contributions & Credits
+---
 
-Pull requests, cleanups, and bug reports are highly appreciated. Feel free to open an issue or submit a PR!
-
-Special thanks to:
-
-* The Linux Kernel Community & CAF
-* RealMe / OPPO for the base kernel source
-* The Realme 2 / MSM8953 Developer Community
-
-```
-
+> **Disclaimer:** Flashing a custom kernel always carries risks. Make sure to back up your boot partitions before installation. This project is provided "as-is" without any warranties.
